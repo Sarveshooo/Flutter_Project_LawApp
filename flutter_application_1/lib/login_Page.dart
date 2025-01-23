@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/home_screen.dart';
+import 'package:flutter_application_1/select_page.dart';
 import 'package:flutter_application_1/singup_Page.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -106,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
             onTap: () {
               Navigator.of(context)
                   .pushReplacement(MaterialPageRoute(builder: (context) {
-                return HomeScreen();
+                return SelectPage();
               }));
             },
             // onTap: () async {

@@ -16,6 +16,15 @@ class _HomeScreenState extends State<HomeScreen> {
     "assets/photos/law_banner_2.jpg",
     "assets/photos/law_banner_3.jpg"
   ];
+  List<String> serviceList = [
+    "Family",
+    "Labour",
+    "Corporate",
+    "Ciminal Defense",
+    "Immigration",
+    "Intellectual Property",
+    "Tax"
+  ];
   int activeIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -100,26 +109,19 @@ class _HomeScreenState extends State<HomeScreen> {
             SliverToBoxAdapter(
               child: Container(
                   width: width - 30,
-                  height: 245,
+                  height: 250,
                   padding: EdgeInsets.all(5),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: Colors.grey, width: 2)),
                   child: GridView.builder(
+                      itemCount: serviceList.length,
+                      shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2),
                       itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            color: Colors.black,
-                            child: SvgPicture.asset(
-                              "assets/svgs/books.svg",
-                              fit: BoxFit.contain,
-                            ), //sdhya sathi asach thevlay tula change karaycha asel tr kar:h
-                          ),
-                        );
+                        return services(serviceList[index]);
                       })),
             ),
             SliverToBoxAdapter(
@@ -224,6 +226,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 filterQuality: FilterQuality.high,
                 fit: BoxFit.fill),
             border: Border.all(color: Colors.grey, width: 2)),
+      ),
+    );
+  }
+
+  Widget services(String serviceType) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        color: Colors.blueGrey.shade100,
+        // child: SvgPicture.asset(
+        //   "assets/svgs/books.svg",
+        //   fit: BoxFit.contain,
+        // ), //sdhya sathi asach thevlay tula change karaycha asel tr kar:h
+        child: Center(
+          child: Text(serviceType,
+          textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                  fontSize: 15,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w700)),
+        ),
       ),
     );
   }
